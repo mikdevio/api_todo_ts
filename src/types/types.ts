@@ -7,3 +7,5 @@ export interface Task {
     completed: boolean;
     createdAt: Date;
 }
+
+export type CreateTaskDto = Omit<Task, 'id' | 'createdAt' | 'completed'>;

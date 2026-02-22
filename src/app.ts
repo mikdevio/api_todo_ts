@@ -4,6 +4,8 @@ import express, { type Request, type Response} from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
+import apiRouter from "./routes/index.js"
+
 // Variables de configuración
 dotenv.config();
 
@@ -17,10 +19,7 @@ app.use(express.json());
 // Obteniendo valor del puerto de conexión
 const PORT = process.env.PORT || 3300;
 
-// Punto de entrada de la app
-app.get('/', (req: Request, res: Response) => {
-    res.send("API TODO TS working with Typescript");
-});
+app.use("/", apiRouter);
 
 // Iniciando servidor en localhost:pruerto
 app.listen(PORT, () => {
