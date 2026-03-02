@@ -28,7 +28,7 @@ export const getTaskByID = (req: Request, res: Response) => {
         res.status(201).json({
             status: "success",
             data: [],
-            msg: `Task with ID: ${id} has been created.`
+            msg: `Task with ID: ${id} has been found.`
         });
 
     } catch (error) {
@@ -58,4 +58,3 @@ export const createTask = (req: Request, res: Response) => {
         });
     }
 }
-

@@ -4,7 +4,11 @@ import express, { type Request, type Response} from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
+
 import apiRouter from "./routes/index.js"
+
+import { AppDataSource } from './data_source.js';
+import { getSystemErrorMap } from 'node:util';
 
 // Variables de configuración
 dotenv.config();
@@ -15,6 +19,11 @@ const app = express();
 // Agregando funcionalidades
 app.use(cors());
 app.use(express.json());
+
+// Configurando la base de datos
+AppDataSource.initialize()
+    .then(() => console.log("PSQL connected."))
+    .catch((error) => console.error("Error during connection:", error))
 
 // Obteniendo valor del puerto de conexión
 const PORT = process.env.PORT || 3300;
