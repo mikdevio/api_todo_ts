@@ -7,8 +7,7 @@ import cors from 'cors';
 
 import apiRouter from "./routes/index.js"
 
-import { AppDataSource } from './data_source.js';
-import { getSystemErrorMap } from 'node:util';
+import { AppDataSource } from './config/data_source.js';
 
 // Variables de configuración
 dotenv.config();

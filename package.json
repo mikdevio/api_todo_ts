@@ -5,7 +5,11 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec tsx src/app.ts"
+    "start": "nodemon --exec tsx src/server.ts",
+    "typeorm": "typeorm-ts-node-commonjs -d ./src/config/data-source.ts",
+    "migration:generate": "npm run typeorm migration:generate ./src/migrations/InitialSetup",
+    "migration:run": "npm run typeorm migration:run",
+    "migration:revert": "npm run typeorm migration:revert"
   },
   "keywords": [],
   "author": "",

@@ -1,11 +1,19 @@
 import express, { type Request, type Response } from 'express';
 import { type Task } from '../types/types.js';
+import { TaskService } from '../services/TaskService.js';
 
-export const getAllTask = (req: Request, res: Response) => {
+const taskService = new TaskService();
+
+
+export const getAllTask = async (req: Request, res: Response) => {
     try {
+
+        // Obteniendo toda la lista de tareas, si no hay datos devuelve []
+        const tasks = await taskService.getAllTasks();
+
         res.status(201).json({
             status: "success",
-            data: [],
+            data: [tasks],
             msg: "All tasks had been retrieved."
         });
     } catch (error) {
@@ -39,10 +47,15 @@ export const getTaskByID = (req: Request, res: Response) => {
     }
 }
 
-export const createTask = (req: Request, res: Response) => {
+export const createTask = async (req: Request, res: Response) => {
     try {
-        const data = req.body; // Recibiendo datos de tarea desde el cliente
-        console.log('Data received: ', data);
+        const {title, description} = req.body; // Recibiendo datos de tarea desde el cliente
+        console.log("POST CREATE TRIGGERED")
+
+        // Creando nueva task
+        const task = await taskService.createTask({title, description});
+
+        console.log(task)
 
         //TODO: Agregar lógica de gardado de datos en DB
          res.status(201).json({
