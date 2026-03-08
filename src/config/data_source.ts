@@ -32,6 +32,11 @@ export const AppDataSource = new DataSource({
   entities: [Task, User],
   synchronize: true, // Solo en desarrollo
   logging: false,
-  migrations: ["src/migrations/*.ts"],
   subscribers: [],
+
+  // Migrations
+  migrations: ["src/migrations/*.ts"],
+  migrationRun: false,
+  migrationsTableName: 'migrations',
+  migrationsTransationMode: 'all',
 });

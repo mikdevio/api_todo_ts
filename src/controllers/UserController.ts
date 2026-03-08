@@ -16,6 +16,7 @@ export const getAllUser = async (req: Request, res: Response) => {
             data: [users],
             msg: "All tasks had been retrieved."
         });
+        
     } catch (error) {
         res.status(500).send({
             status: "Server error",
@@ -24,10 +25,12 @@ export const getAllUser = async (req: Request, res: Response) => {
     }
 }
 
-export const getUserByID = (req: Request, res: Response) => {
+export const getUserByID = async (req: Request, res: Response) => {
     try {
         // Obteniendo el parametro id
         const { id } = req.params;
+
+        const user = await userService.getUserByID(Number(id));
 
         console.log(`Looking for the task with ID: ${id}`)
 
@@ -35,7 +38,7 @@ export const getUserByID = (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [],
+            data: [user],
             msg: `Task with ID: ${id} has been found.`
         });
 

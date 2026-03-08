@@ -24,4 +24,7 @@ export class UserService {
         return await this.userRepository.find();
     }
 
+    async getUserByID(id: number) {
+        return await this.userRepository.findBy({id: id})
+    }
 }

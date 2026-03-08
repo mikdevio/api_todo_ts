@@ -1,5 +1,6 @@
 import { AppDataSource } from "../config/data_source.js";
 import { Task } from "../entity/TaskEntity.js";
+import type { User } from "../entity/UserEntity.js";
 
 export class TaskService {
     // Obtenemos el repositorios de Task
@@ -20,6 +21,10 @@ export class TaskService {
 
     async getAllTasks(): Promise<Task[]> {
         return await this.taskRepository.find();
+    }
+
+    async getTaskByID(id: number) {
+        return await this.taskRepository.findBy({id: id})
     }
 
 }

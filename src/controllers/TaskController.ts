@@ -16,6 +16,7 @@ export const getAllTask = async (req: Request, res: Response) => {
             data: [tasks],
             msg: "All tasks had been retrieved."
         });
+        
     } catch (error) {
         res.status(500).send({
             status: "Server error",
@@ -24,10 +25,12 @@ export const getAllTask = async (req: Request, res: Response) => {
     }
 }
 
-export const getTaskByID = (req: Request, res: Response) => {
+export const getTaskByID = async (req: Request, res: Response) => {
     try {
         // Obteniendo el parametro id
         const { id } = req.params;
+
+        const task = await taskService.getTaskByID(Number(id));
 
         console.log(`Looking for the task with ID: ${id}`)
 
@@ -35,7 +38,7 @@ export const getTaskByID = (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [],
+            data: [task],
             msg: `Task with ID: ${id} has been found.`
         });
 
