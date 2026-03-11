@@ -6,7 +6,7 @@ export class TaskService {
     // Obtenemos el repositorios de Task
     private taskRepository = AppDataSource.getRepository(Task);
 
-    async createTask(data: {title: string, description: string}){
+    async createTask(data: {title: string, description: string}): Promise<Task> {
         // 1. Creamos una nueva tarea
         const newTask = new Task();
         // 2. Asignando parametros de nueva tarea
@@ -23,8 +23,23 @@ export class TaskService {
         return await this.taskRepository.find();
     }
 
-    async getTaskByID(id: number) {
-        return await this.taskRepository.findBy({id: id})
+    async getTaskByID(id: number): Promise<Task[]> {
+        return await this.taskRepository.findBy({id})
+    }
+
+    async editTask(id: number, data :{title: string, description: string, completed: boolean, user: User}): Promise<void> {
+        const task = await this.taskRepository.findOneBy({id});
+        if(task) {
+            task.title = data.title;
+            task.description = data.description;
+            task.completed = data.completed;
+            task.user = data.user;
+            await this.taskRepository.save(task);
+        }
+    }
+
+    async deleteTaskByID(id: number) {
+        return await this.taskRepository.delete(id);
     }
 
 }

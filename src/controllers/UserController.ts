@@ -74,3 +74,49 @@ export const createUser = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const editUser = async (req: Request, res: Response) => {
+    try {
+        const {id, data} = req.body; // Recibiendo datos de tarea desde el cliente
+
+        // Creando nueva task
+        const user = await userService.editUser(id, data);
+
+        // console.log(task)
+
+         res.status(201).json({
+            status: "success",
+            data: [user],
+            msg: "Task has been updated."
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            status: "Server error",
+            msg: `Error: ${error}`
+        });
+    }
+}
+
+export const deleteUser = async (req: Request, res: Response) => {
+    try {
+        const {id } = req.body; // Recibiendo datos de tarea desde el cliente
+
+        // Creando nueva task
+        const user = await userService.deleteUserByID(id);
+
+        // console.log(task)
+
+         res.status(201).json({
+            status: "success",
+            data: [user],
+            msg: "Task has been deleted."
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            status: "Server error",
+            msg: `Error: ${error}`
+        });
+    }
+}

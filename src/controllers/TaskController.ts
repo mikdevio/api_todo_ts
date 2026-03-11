@@ -53,18 +53,64 @@ export const getTaskByID = async (req: Request, res: Response) => {
 export const createTask = async (req: Request, res: Response) => {
     try {
         const {title, description} = req.body; // Recibiendo datos de tarea desde el cliente
-        console.log("POST CREATE TRIGGERED")
+        // console.log("POST CREATE TRIGGERED")
 
         // Creando nueva task
         const task = await taskService.createTask({title, description});
 
-        console.log(task)
+        // console.log(task)
 
         //TODO: Agregar lógica de gardado de datos en DB
          res.status(201).json({
             status: "success",
             data: [],
             msg: "New task has been created."
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            status: "Server error",
+            msg: `Error: ${error}`
+        });
+    }
+}
+
+export const editTask = async (req: Request, res: Response) => {
+    try {
+        const {id, data} = req.body; // Recibiendo datos de tarea desde el cliente
+
+        // Creando nueva task
+        const task = await taskService.editTask(id, data);
+
+        // console.log(task)
+
+         res.status(201).json({
+            status: "success",
+            data: [task],
+            msg: "Task has been updated."
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            status: "Server error",
+            msg: `Error: ${error}`
+        });
+    }
+}
+
+export const deleteTask = async (req: Request, res: Response) => {
+    try {
+        const {id } = req.body; // Recibiendo datos de tarea desde el cliente
+
+        // Creando nueva task
+        const task = await taskService.deleteTaskByID(id);
+
+        // console.log(task)
+
+         res.status(201).json({
+            status: "success",
+            data: [task],
+            msg: "Task has been deleted."
         });
 
     } catch (error) {

@@ -27,4 +27,20 @@ export class UserService {
     async getUserByID(id: number) {
         return await this.userRepository.findBy({id: id})
     }
+
+    async editUser(id: number, data: {firstName: string, lastName: string, address:string, email:string, isActive: boolean}): Promise<void> {
+        const user = await this.userRepository.findOneBy({id});
+        if(user) {
+            user.firstName = data.firstName;
+            user.lastName = data.lastName;
+            user.address = data.address;
+            user.email = data.email;
+            user.isActive = data.isActive;
+            await this.userRepository.save(user);
+        }
+    }
+
+    async deleteUserByID(id: number) {
+        return await this.userRepository.delete(id);
+    }
 }
