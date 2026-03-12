@@ -56,15 +56,63 @@ Backend desarrollado con TypeScript, Express y Prisma para gestionar tareas (CRU
 
 | Método | Endpoint | Descripción |
 | :--- | :--- | :--- |
-| `GET` | `/api/tasks` | Obtener todas las tareas. |
-| `POST` | `/api/tasks` | Crear una nueva tarea. |
-| `PUT` | `/api/tasks/:id` | Actualizar una tarea. |
-| `DELETE` | `/api/tasks/:id` | Eliminar una tarea. |
+| `GET` | `/api/task` | Obtener todas las tareas. |
+| `POST` | `/api/task` | Crear una nueva tarea. |
+| `PUT` | `/api/task/:id` | Actualizar una tarea. |
+| `DELETE` | `/api/task/:id` | Eliminar una tarea. |
+| `GET` | `/api/user` | Obtener todos los usuarios. |
+| `POST` | `/api/user` | Crear una nueva usuario. |
+| `PUT` | `/api/user/:id` | Actualizar una usuario. |
+| `DELETE` | `/api/user/:id` | Eliminar una usuario. |
 
-## 🧪 Ejemplo de Payload (POST /api/tasks)
+## 🧪 Ejemplos:
 
-```json
-{
-  "title": "Aprender TypeScript en profundidad",
-  "description": "Completar el proyecto del portfolio"
-}
+
+### (GET /api/task) Todas las tareas
+
+```bash
+curl -X GET http://localhost:3500/task/
+```
+
+### (GET /api/task/:id) Tarea especifica con id=1
+
+```bash
+curl -X GET http://localhost:3500/task/1
+```
+
+### (PUT /api/task)/:id
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "Task 1", "description": "Complete task 0", "user": 1}' http://localhost:3500/task/1
+```
+
+### (GET /api/task) Eliminar tarea con id=1
+
+```bash
+curl -X DELETE http://localhost:3500/task/1
+```
+
+
+### (GET /api/task) Todos los usuarios
+
+```bash
+curl -X GET http://localhost:3500/user/
+```
+
+### (GET /api/task/:id) Usuario especifico con id=1
+
+```bash
+curl -X GET http://localhost:3500/user/1
+```
+
+### (PUT /api/task/:id)
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"firstName": "User", "lastName": "Admin", "address": "One Street", "email": "one@email.com", "isActive": true}' http://localhost:3500/user/1
+```
+
+### (GET /api/task) Eliminar usuario con id=1
+
+```bash
+curl -X DELETE http://localhost:3500/user/1
+```

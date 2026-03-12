@@ -28,7 +28,7 @@ export const getAllTask = async (req: Request, res: Response) => {
 export const getTaskByID = async (req: Request, res: Response) => {
     try {
         // Obteniendo el parametro id
-        const { id } = req.params;
+        const id = Number(req.params.id);
 
         const task = await taskService.getTaskByID(Number(id));
 
@@ -52,11 +52,11 @@ export const getTaskByID = async (req: Request, res: Response) => {
 
 export const createTask = async (req: Request, res: Response) => {
     try {
-        const {title, description} = req.body; // Recibiendo datos de tarea desde el cliente
-        // console.log("POST CREATE TRIGGERED")
+        const data = req.body; // Recibiendo datos de tarea desde el cliente
+        // TODO: completar validacion con ZOD
 
         // Creando nueva task
-        const task = await taskService.createTask({title, description});
+        const task = await taskService.createTask(data);
 
         // console.log(task)
 
@@ -77,7 +77,12 @@ export const createTask = async (req: Request, res: Response) => {
 
 export const editTask = async (req: Request, res: Response) => {
     try {
-        const {id, data} = req.body; // Recibiendo datos de tarea desde el cliente
+
+        const id = Number(req.params.id);
+        const data = req.body; // Recibiendo datos de tarea desde el cliente
+
+        console.log(id)
+        console.log(data)
 
         // Creando nueva task
         const task = await taskService.editTask(id, data);
@@ -100,7 +105,7 @@ export const editTask = async (req: Request, res: Response) => {
 
 export const deleteTask = async (req: Request, res: Response) => {
     try {
-        const {id } = req.body; // Recibiendo datos de tarea desde el cliente
+        const id = Number(req.params.id); // Recibiendo datos de tarea desde el cliente
 
         // Creando nueva task
         const task = await taskService.deleteTaskByID(id);

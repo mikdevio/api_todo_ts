@@ -6,7 +6,7 @@ export class TaskService {
     // Obtenemos el repositorios de Task
     private taskRepository = AppDataSource.getRepository(Task);
 
-    async createTask(data: {title: string, description: string}): Promise<Task> {
+    async createTask(data: {title: string, description: string, user: User}): Promise<Task> {
         // 1. Creamos una nueva tarea
         const newTask = new Task();
         // 2. Asignando parametros de nueva tarea
@@ -14,6 +14,7 @@ export class TaskService {
         newTask.description = data.description;
         newTask.completed = false;
         newTask.createdAt = new Date();
+        newTask.user = data.user;
 
         // 3. Guardando los datos (INSERT) en database
         return await this.taskRepository.save(newTask);

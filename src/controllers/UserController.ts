@@ -14,7 +14,7 @@ export const getAllUser = async (req: Request, res: Response) => {
         res.status(201).json({
             status: "success",
             data: [users],
-            msg: "All tasks had been retrieved."
+            msg: "All users had been retrieved."
         });
         
     } catch (error) {
@@ -28,9 +28,9 @@ export const getAllUser = async (req: Request, res: Response) => {
 export const getUserByID = async (req: Request, res: Response) => {
     try {
         // Obteniendo el parametro id
-        const { id } = req.params;
+        const id = Number(req.params.id);
 
-        const user = await userService.getUserByID(Number(id));
+        const user = await userService.getUserByID(id);
 
         console.log(`Looking for the task with ID: ${id}`)
 
@@ -39,7 +39,7 @@ export const getUserByID = async (req: Request, res: Response) => {
         res.status(201).json({
             status: "success",
             data: [user],
-            msg: `Task with ID: ${id} has been found.`
+            msg: `User with ID: ${id} has been found.`
         });
 
     } catch (error) {
@@ -52,11 +52,11 @@ export const getUserByID = async (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
     try {
-        const {firstName, lastName, address, email} = req.body; // Recibiendo datos de tarea desde el cliente
+        const data = req.body; // Recibiendo datos de tarea desde el cliente
         console.log("POST CREATE TRIGGERED")
 
         // Creando nueva task
-        const user = await userService.createUser({firstName, lastName, address, email});
+        const user = await userService.createUser(data);
 
         // console.log(user)
 
@@ -64,7 +64,7 @@ export const createUser = async (req: Request, res: Response) => {
          res.status(201).json({
             status: "success",
             data: [],
-            msg: "New task has been created."
+            msg: "New user has been created."
         });
 
     } catch (error) {
@@ -77,7 +77,11 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const editUser = async (req: Request, res: Response) => {
     try {
-        const {id, data} = req.body; // Recibiendo datos de tarea desde el cliente
+
+        const id = Number(req.params.id);
+        const {data} = req.body; // Recibiendo datos de tarea desde el cliente
+
+        console.log(id);
 
         // Creando nueva task
         const user = await userService.editUser(id, data);
@@ -87,7 +91,7 @@ export const editUser = async (req: Request, res: Response) => {
          res.status(201).json({
             status: "success",
             data: [user],
-            msg: "Task has been updated."
+            msg: "User has been updated."
         });
 
     } catch (error) {
@@ -100,7 +104,7 @@ export const editUser = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
     try {
-        const {id } = req.body; // Recibiendo datos de tarea desde el cliente
+        const id = Number(req.params.id); // Recibiendo datos de tarea desde el cliente
 
         // Creando nueva task
         const user = await userService.deleteUserByID(id);
@@ -110,7 +114,7 @@ export const deleteUser = async (req: Request, res: Response) => {
          res.status(201).json({
             status: "success",
             data: [user],
-            msg: "Task has been deleted."
+            msg: "A user has been deleted."
         });
 
     } catch (error) {
