@@ -1,9 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, ManyToMany } from "typeorm";
 import { User } from "./UserEntity.js";
+import { Category } from "./CategoryEntity.js";
 
 @Entity()
 export class Task {
-    
+
     @PrimaryGeneratedColumn('increment')
     id: number;
 
@@ -14,7 +15,7 @@ export class Task {
     description: string;
 
 
-    @Column({type:"boolean", default: false})
+    @Column({ type: "boolean", default: false })
     completed: boolean;
 
     @CreateDateColumn()
@@ -22,4 +23,7 @@ export class Task {
 
     @ManyToOne(() => User, (user) => user.tasks)
     user: User
+
+    @ManyToMany(() => Category, category => category.task)
+    category: Category
 }
