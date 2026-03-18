@@ -3,11 +3,11 @@ import { Category } from "../entity/CategoryEntity.js";
 import type { Task } from "../entity/TaskEntity.js";
 
 
-export class TaskService {
+export class CategoryService {
     // Obtenemos el repositorios de Task
     private categoryRepository = AppDataSource.getRepository(Category);
 
-    async createCategory(data: { name: string, description: string, task: Task }): Promise<Task> {
+    async createCategory(data: { name: string, description: string, task: Task }): Promise<Category> {
         // 1. Creamos una nueva tarea
         const newCategory = new Category();
         // 2. Asignando parametros de nueva tarea

@@ -3,7 +3,7 @@ import { Task } from "./TaskEntity.js";
 
 @Entity()
 export class User {
-    
+
     @PrimaryGeneratedColumn('increment')
     id: number;
 
@@ -19,13 +19,13 @@ export class User {
     @Column("text")
     email: string;
 
-    @Column({type:"boolean", default: false})
+    @Column({ type: "boolean", default: false })
     isActive: boolean;
 
     @CreateDateColumn()
     createdAt: Date;
 
-    @OneToMany(()=>Task, (task) => task.user)
+    @OneToMany(() => Task, (task) => task.user)
     tasks: Task[]
 
 }
