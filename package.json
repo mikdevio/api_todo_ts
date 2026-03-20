@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec tsx src/server.ts",
-    "typeorm": "typeorm-ts-node-commonjs -d ./src/config/data-source.ts",
-    "migration:generate": "npm run typeorm migration:generate ./src/migrations/InitialSetup",
+    "build": "rimraf dist && tsc",
+    "typeorm": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/config/data_source.ts",
+    "migration:generate": "npm run typeorm migration:generate src/migrations/InitialSetup",
     "migration:run": "npm run typeorm migration:run",
     "migration:revert": "npm run typeorm migration:revert"
   },
@@ -29,7 +30,9 @@
     "@types/express": "^5.0.6",
     "@types/node": "^25.3.3",
     "nodemon": "^3.1.14",
+    "rimraf": "^6.1.3",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.21.0",
     "typeorm-extension": "^3.9.0",
     "typescript": "^5.9.3"

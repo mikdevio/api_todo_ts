@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Task } from "./TaskEntity.js";
 
 
@@ -17,6 +17,7 @@ export class Category {
     @CreateDateColumn()
     createdAt: Date;
 
-    @ManyToMany(() => Task, task => task.category)
-    task: Task;
+    @ManyToMany(() => Task, task => task.categories)
+    @JoinTable()
+    tasks: Task[];
 }

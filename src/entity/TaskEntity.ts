@@ -22,8 +22,8 @@ export class Task {
     createdAt: Date;
 
     @ManyToOne(() => User, (user) => user.tasks)
-    user: User
+    user: User;
 
-    @ManyToMany(() => Category, category => category.task)
-    category: Category
+    @ManyToMany(() => Category, category => category.tasks)
+    categories: Category[];
 }

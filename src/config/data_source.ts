@@ -30,14 +30,18 @@ export const AppDataSource = new DataSource({
   username: dbConfig.user,
   password: dbConfig.pass,
   database: dbConfig.name,
-  entities: [Task, User, Category],
-  synchronize: true,              // Solo en desarrollo
+  // entities: [Task, User, Category],
+  // entities: ['/src/entity/*{.ts,.js}'],
+  synchronize: false,              // Solo en desarrollo
   logging: false,
   subscribers: [],
 
+  entities: ['./src/**/*.entity{.ts,.js}'],
+  migrations: ['./src/../migrations/**/*{.ts,.js}'],
+
   // Migrations
-  migrations: ["src/migrations/*.ts"],
-  migrationsRun: false,
-  migrationsTableName: 'migrations',
-  migrationsTransactionMode: 'all',
+  // migrations: ['./src/migrations/*{.ts,.js}'],
+  // migrationsRun: false,
+  // migrationsTableName: 'migrations',
+  // migrationsTransactionMode: 'all',
 });

@@ -14,7 +14,7 @@ export class CategoryService {
         newCategory.name = data.name;
         newCategory.description = data.description;
         newCategory.createdAt = new Date();
-        newCategory.task = data.task;
+        newCategory.tasks = data.task;
 
         // 3. Guardando los datos (INSERT) en database
         return await this.categoryRepository.save(newCategory);
@@ -33,7 +33,7 @@ export class CategoryService {
         if (category) {
             category.name = data.title;
             category.description = data.description;
-            category.task = data.task;
+            category.tasks = data.task;
             await this.categoryRepository.save(category);
         }
     }
