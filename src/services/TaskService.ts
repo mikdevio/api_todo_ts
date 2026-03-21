@@ -1,12 +1,21 @@
+import { In } from "typeorm";
 import { AppDataSource } from "../config/data_source.js";
+import { Category } from "../entity/CategoryEntity.js";
 import { Task } from "../entity/TaskEntity.js";
-import type { User } from "../entity/UserEntity.js";
+import { User } from "../entity/UserEntity.js";
 
 export class TaskService {
     // Obtenemos el repositorios de Task
     private taskRepository = AppDataSource.getRepository(Task);
+    private userRepository = AppDataSource.getRepository(User);
+    private categoryRepository = AppDataSource.getRepository(Category);
 
-    async createTask(data: {title: string, description: string, user: User}): Promise<Task> {
+    async createTask(data: { title: string, description: string, user: number, categories: number[] }): Promise<Task> {
+
+        // 0. Buscando objetos user y category
+        const userObj = await this.userRepository.findOneBy({ id: data.user }) as User;
+        const categoriesObj = await this.categoryRepository.findBy({ id: In(data.categories) }) as Category[];
+
         // 1. Creamos una nueva tarea
         const newTask = new Task();
         // 2. Asignando parametros de nueva tarea
@@ -14,7 +23,10 @@ export class TaskService {
         newTask.description = data.description;
         newTask.completed = false;
         newTask.createdAt = new Date();
-        newTask.user = data.user;
+        newTask.user = userObj;
+        newTask.categories = categoriesObj;
+
+        // console.log(newTask);
 
         // 3. Guardando los datos (INSERT) en database
         return await this.taskRepository.save(newTask);
@@ -25,12 +37,12 @@ export class TaskService {
     }
 
     async getTaskByID(id: number): Promise<Task[]> {
-        return await this.taskRepository.findBy({id})
+        return await this.taskRepository.findBy({ id })
     }
 
-    async editTask(id: number, data :{title: string, description: string, completed: boolean, user: User}): Promise<void> {
-        const task = await this.taskRepository.findOneBy({id});
-        if(task) {
+    async editTask(id: number, data: { title: string, description: string, completed: boolean, user: User }): Promise<void> {
+        const task = await this.taskRepository.findOneBy({ id });
+        if (task) {
             task.title = data.title;
             task.description = data.description;
             task.completed = data.completed;

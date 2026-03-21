@@ -16,7 +16,7 @@ export const getAllTask = async (req: Request, res: Response) => {
             data: [tasks],
             msg: "All tasks had been retrieved."
         });
-        
+
     } catch (error) {
         res.status(500).send({
             status: "Server error",
@@ -58,10 +58,10 @@ export const createTask = async (req: Request, res: Response) => {
         // Creando nueva task
         const task = await taskService.createTask(data);
 
-        // console.log(task)
+        console.log(task);
 
         //TODO: Agregar lógica de gardado de datos en DB
-         res.status(201).json({
+        res.status(201).json({
             status: "success",
             data: [],
             msg: "New task has been created."
@@ -89,7 +89,7 @@ export const editTask = async (req: Request, res: Response) => {
 
         // console.log(task)
 
-         res.status(201).json({
+        res.status(201).json({
             status: "success",
             data: [task],
             msg: "Task has been updated."
@@ -112,7 +112,7 @@ export const deleteTask = async (req: Request, res: Response) => {
 
         // console.log(task)
 
-         res.status(201).json({
+        res.status(201).json({
             status: "success",
             data: [task],
             msg: "Task has been deleted."
