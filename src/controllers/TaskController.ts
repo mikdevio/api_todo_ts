@@ -81,8 +81,8 @@ export const editTask = async (req: Request, res: Response) => {
         const id = Number(req.params.id);
         const data = req.body; // Recibiendo datos de tarea desde el cliente
 
-        console.log(id)
-        console.log(data)
+        // console.log(id)s
+        // console.log(data)
 
         // Creando nueva task
         const task = await taskService.editTask(id, data);

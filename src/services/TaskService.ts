@@ -7,14 +7,17 @@ import { User } from "../entity/UserEntity.js";
 export class TaskService {
     // Obtenemos el repositorios de Task
     private taskRepository = AppDataSource.getRepository(Task);
-    private userRepository = AppDataSource.getRepository(User);
     private categoryRepository = AppDataSource.getRepository(Category);
 
-    async createTask(data: { title: string, description: string, user: number, categories: number[] }): Promise<Task> {
+    async createTask(data: {
+        title: string, description: string, user: number,
+        categories: number[]
+    }): Promise<Task> {
 
         // 0. Buscando objetos user y category
-        const userObj = await this.userRepository.findOneBy({ id: data.user }) as User;
         const categoriesObj = await this.categoryRepository.findBy({ id: In(data.categories) }) as Category[];
+
+        // console.log(userObj)
 
         // 1. Creamos una nueva tarea
         const newTask = new Task();
@@ -23,7 +26,7 @@ export class TaskService {
         newTask.description = data.description;
         newTask.completed = false;
         newTask.createdAt = new Date();
-        newTask.user = userObj;
+        // newTask.user = userObj;
         newTask.categories = categoriesObj;
 
         // console.log(newTask);
@@ -40,13 +43,23 @@ export class TaskService {
         return await this.taskRepository.findBy({ id })
     }
 
-    async editTask(id: number, data: { title: string, description: string, completed: boolean, user: User }): Promise<void> {
+    async editTask(id: number, data: {
+        title: string, description: string,
+        completed: boolean, user: number,
+        categories: number[]
+    }): Promise<void> {
+
         const task = await this.taskRepository.findOneBy({ id });
+        const categoriesObj = await this.categoryRepository.findBy({ id: In(data.categories) }) as Category[];
+
+        console.log(categoriesObj);
+
         if (task) {
             task.title = data.title;
             task.description = data.description;
             task.completed = data.completed;
-            task.user = data.user;
+            // task.user = userObj;
+            task.categories = categoriesObj;
             await this.taskRepository.save(task);
         }
     }

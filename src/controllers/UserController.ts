@@ -16,7 +16,7 @@ export const getAllUser = async (req: Request, res: Response) => {
             data: [users],
             msg: "All users had been retrieved."
         });
-        
+
     } catch (error) {
         res.status(500).send({
             status: "Server error",
@@ -61,7 +61,7 @@ export const createUser = async (req: Request, res: Response) => {
         // console.log(user)
 
         //TODO: Agregar lógica de gardado de datos en DB
-         res.status(201).json({
+        res.status(201).json({
             status: "success",
             data: [],
             msg: "New user has been created."
@@ -79,7 +79,7 @@ export const editUser = async (req: Request, res: Response) => {
     try {
 
         const id = Number(req.params.id);
-        const {data} = req.body; // Recibiendo datos de tarea desde el cliente
+        const { data } = req.body; // Recibiendo datos de tarea desde el cliente
 
         console.log(id);
 
@@ -88,7 +88,7 @@ export const editUser = async (req: Request, res: Response) => {
 
         // console.log(task)
 
-         res.status(201).json({
+        res.status(201).json({
             status: "success",
             data: [user],
             msg: "User has been updated."
@@ -111,7 +111,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 
         // console.log(task)
 
-         res.status(201).json({
+        res.status(201).json({
             status: "success",
             data: [user],
             msg: "A user has been deleted."

@@ -5,7 +5,10 @@ export class UserService {
     // Obtenemos el repositorios de Task
     private userRepository = AppDataSource.getRepository(User);
 
-    async createUser(data: {firstName: string, lastName: string, address:string, email:string}){
+    async createUser(data: {
+        firstName: string, lastName: string, address: string,
+        email: string
+    }) {
         // 1. Creamos una nueva tarea
         const newUser = new User();
         // 2. Asignando parametros de nueva tarea
@@ -25,12 +28,15 @@ export class UserService {
     }
 
     async getUserByID(id: number) {
-        return await this.userRepository.findBy({id: id})
+        return await this.userRepository.findBy({ id: id })
     }
 
-    async editUser(id: number, data: {firstName: string, lastName: string, address:string, email:string, isActive: boolean}): Promise<void> {
-        const user = await this.userRepository.findOneBy({id});
-        if(user) {
+    async editUser(id: number, data: {
+        firstName: string, lastName: string, address: string,
+        email: string, isActive: boolean
+    }): Promise<void> {
+        const user = await this.userRepository.findOneBy({ id });
+        if (user) {
             user.firstName = data.firstName;
             user.lastName = data.lastName;
             user.address = data.address;

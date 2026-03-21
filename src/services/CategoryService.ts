@@ -7,14 +7,13 @@ export class CategoryService {
     // Obtenemos el repositorios de Task
     private categoryRepository = AppDataSource.getRepository(Category);
 
-    async createCategory(data: { name: string, description: string, task: Task }): Promise<Category> {
+    async createCategory(data: { name: string, description: string }): Promise<Category> {
         // 1. Creamos una nueva tarea
         const newCategory = new Category();
         // 2. Asignando parametros de nueva tarea
         newCategory.name = data.name;
         newCategory.description = data.description;
         newCategory.createdAt = new Date();
-        newCategory.tasks = data.task;
 
         // 3. Guardando los datos (INSERT) en database
         return await this.categoryRepository.save(newCategory);
@@ -28,12 +27,14 @@ export class CategoryService {
         return await this.categoryRepository.findBy({ id })
     }
 
-    async editCategory(id: number, data: { title: string, description: string, completed: boolean, task: Task }): Promise<void> {
+    async editCategory(id: number, data: {
+        title: string, description: string,
+        completed: boolean
+    }): Promise<void> {
         const category = await this.categoryRepository.findOneBy({ id });
         if (category) {
             category.name = data.title;
             category.description = data.description;
-            category.tasks = data.task;
             await this.categoryRepository.save(category);
         }
     }
