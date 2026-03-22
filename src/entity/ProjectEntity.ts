@@ -7,7 +7,7 @@ export class Project {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column({ length: 100 })
+    @Column()
     name: string;
 
     @Column({ type: 'text', nullable: true })
