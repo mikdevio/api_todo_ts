@@ -1,6 +1,6 @@
 // app.ts
-
-import express, { type Request, type Response} from 'express';
+import 'reflect-metadata';
+import express, { type Request, type Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 

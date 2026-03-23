@@ -1,19 +1,21 @@
-import { Column, CreateDateColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./UserEntity.js";
 import { Task } from "./TaskEntity.js";
 
+
+@Entity()
 export class Project {
 
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column()
+    @Column({ type: 'text' })
     name: string;
 
     @Column({ type: 'text', nullable: true })
     description: string;
 
-    @Column({ default: '#00609C' })
+    @Column({ type: 'text', default: '#00609C' })
     color: string;
 
     @Column({

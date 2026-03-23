@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, ManyToMany } from "typeorm";
-import { User } from "./UserEntity.js";
 import { Category } from "./CategoryEntity.js";
 import { Project } from "./ProjectEntity.js";
 
@@ -14,7 +13,6 @@ export class Task {
 
     @Column("text")
     description: string;
-
 
     @Column({ type: "boolean", default: false })
     completed: boolean;

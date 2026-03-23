@@ -2,6 +2,7 @@ import { DataSource } from "typeorm";
 import { Task } from '../entity/TaskEntity.js'
 import { User } from "../entity/UserEntity.js"
 import { Category } from "../entity/CategoryEntity.js";
+import { Project } from "../entity/ProjectEntity.js";
 
 import dotenv from 'dotenv';
 
@@ -30,9 +31,9 @@ export const AppDataSource = new DataSource({
   username: dbConfig.user,
   password: dbConfig.pass,
   database: dbConfig.name,
-  entities: [Task, User, Category],
+  entities: [Task, User, Category, Project],
   // entities: ['/src/entity/*{.ts,.js}'],
-  synchronize: true,              // Solo en desarrollo
+  synchronize: false,              // Solo en desarrollo
   logging: false,
   subscribers: [],
 
@@ -41,7 +42,7 @@ export const AppDataSource = new DataSource({
 
   // Migrations
   // migrations: ['./src/migrations/*{.ts,.js}'],
-  // migrationsRun: false,
-  // migrationsTableName: 'migrations',
-  // migrationsTransactionMode: 'all',
+  migrationsRun: false,
+  migrationsTableName: 'migrations',
+  migrationsTransactionMode: 'all',
 });
