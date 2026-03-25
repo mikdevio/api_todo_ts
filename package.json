@@ -8,9 +8,9 @@
     "start": "nodemon --exec tsx src/server.ts",
     "build": "rimraf dist && tsc",
     "typeorm": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/config/data_source.ts",
-    "migration:generate": "npm run typeorm migration:generate src/migrations/InitialSetup",
-    "migration:run": "npm run typeorm migration:run",
-    "migration:revert": "npm run typeorm migration:revert"
+    "migration:generate": "npm run typeorm -- migration:generate",
+    "migration:run": "npm run typeorm -- migration:run",
+    "migration:revert": "npm run typeorm -- migration:revert"
   },
   "keywords": [],
   "author": "",

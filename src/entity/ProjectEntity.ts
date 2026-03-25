@@ -6,7 +6,7 @@ import { Task } from "./TaskEntity.js";
 @Entity()
 export class Project {
 
-    @PrimaryGeneratedColumn("uuid")
+    @PrimaryGeneratedColumn("increment")
     id: string;
 
     @Column({ type: 'text' })
