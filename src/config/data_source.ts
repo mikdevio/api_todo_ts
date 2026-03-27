@@ -1,10 +1,13 @@
 import { DataSource } from "typeorm";
+import { SeederOptions } from "typeorm-extension";
 import { Task } from '../entity/TaskEntity.js'
 import { User } from "../entity/UserEntity.js"
 import { Category } from "../entity/CategoryEntity.js";
 import { Project } from "../entity/ProjectEntity.js";
 
 import dotenv from 'dotenv';
+import InitialSeeder from "../seeds/initial.seeder.js";
+import type { DataSourceOptions } from "typeorm/browser";
 
 // Variables de configuración
 dotenv.config();
@@ -24,7 +27,7 @@ if (Object.values(dbConfig).some(v => !v)) {
   throw new Error("There's non defined variables in .env");
 }
 
-export const AppDataSource = new DataSource({
+const options: DataSourceOptions & SeederOptions = {
   type: "postgres",
   host: dbConfig.host,
   port: dbConfig.port,
@@ -40,9 +43,14 @@ export const AppDataSource = new DataSource({
   // entities: ['./src/**/*{.ts,.js}'],
   migrations: ['./src/migrations/*{.ts,.js}'],
 
+  // Registrar seeder
+  seeds: [InitialSeeder],
+
   // Migrations
   // migrations: ['./src/migrations/*{.ts,.js}'],
   migrationsRun: false,
   migrationsTableName: 'migrations',
   migrationsTransactionMode: 'all',
-});
+}
+
+export const AppDataSource = new DataSource(options);

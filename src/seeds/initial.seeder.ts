@@ -31,7 +31,7 @@ export default class InitialSeeder implements Seeder {
             },
         ]);
 
-        await userRepository.save(defaultUsers);
+        const savedUsers = await userRepository.save(defaultUsers);
 
         // 2. Crear categorias por defecto
         const defaultCategories = categoryRepository.create([
@@ -53,8 +53,36 @@ export default class InitialSeeder implements Seeder {
             }
         ]);
 
-        await categoryRepository.save(defaultCategories);
+        const savedCategories = await categoryRepository.save(defaultCategories);
 
+        const defaultProjects = projectRepository.create([
+            {
+                name: "Default Project",
+                description: "Example project",
+                user: savedUsers[0] as User
+            },
+            {
+                name: "Daily Task ",
+                description: "Project to organize daily task",
+                user: savedUsers[0] as User
+            },
+        ])
 
+        const savedProjects = await projectRepository.save(defaultProjects);
+
+        const defaultTasks = taskRepository.create([
+            {
+                title: "Daily task 001",
+                description: "Daily task example 001",
+                project: savedProjects[1] as Project,
+                categories: [savedCategories[0], savedCategories[2]] as Category[]
+            },
+            {
+                title: "Default task 001",
+                description: "Default task example 001",
+                project: savedProjects[0] as Project,
+                categories: [savedCategories[1]] as Category[]
+            }
+        ])
     }
 }

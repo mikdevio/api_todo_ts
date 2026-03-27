@@ -20,3 +20,4 @@ benchmarks/graphs
 # https://git-scm.com/docs/gitignore
 
 dist/
+.env
