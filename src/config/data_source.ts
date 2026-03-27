@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { SeederOptions } from "typeorm-extension";
+import type { SeederOptions } from "typeorm-extension";
 import { Task } from '../entity/TaskEntity.js'
 import { User } from "../entity/UserEntity.js"
 import { Category } from "../entity/CategoryEntity.js";
@@ -36,7 +36,7 @@ const options: DataSourceOptions & SeederOptions = {
   database: dbConfig.name,
   entities: [Task, User, Category, Project],
   // entities: ['/src/entity/*{.ts,.js}'],
-  synchronize: false,              // Solo en desarrollo
+  synchronize: false,              // Solo en desarrollo, activar para generar tablas
   logging: false,
   subscribers: [],
 
