@@ -13,7 +13,7 @@ export const getAllCategories = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [categories],
+            data: categories,
             msg: "All categories had been retrieved."
         });
 
@@ -38,7 +38,7 @@ export const getCategoryByID = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [category],
+            data: category,
             msg: `Category with ID: ${id} has been found.`
         });
 
@@ -88,7 +88,7 @@ export const editCategory = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [category],
+            data: category,
             msg: "Category has been updated."
         });
 
@@ -109,7 +109,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [category],
+            data: category,
             msg: "Category has been deleted."
         });
 

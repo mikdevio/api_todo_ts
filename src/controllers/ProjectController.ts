@@ -13,7 +13,7 @@ export const getAllProjects = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [projects],
+            data: projects,
             msg: "All categories had been retrieved."
         });
 
@@ -38,7 +38,7 @@ export const getProjectByID = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [project],
+            data: project,
             msg: `Category with ID: ${id} has been found.`
         });
 
@@ -63,7 +63,7 @@ export const createProject = async (req: Request, res: Response) => {
         //TODO: Agregar lógica de gardado de datos en DB
         res.status(201).json({
             status: "success",
-            data: [project],
+            data: project,
             msg: "New category has been created."
         });
 
@@ -88,7 +88,7 @@ export const editProject = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [project],
+            data: project,
             msg: "Category has been updated."
         });
 
@@ -109,7 +109,7 @@ export const deleteProject = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [project],
+            data: project,
             msg: "Category has been deleted."
         });
 

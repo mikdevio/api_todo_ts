@@ -13,7 +13,7 @@ export const getAllTask = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [tasks],
+            data: tasks,
             msg: "All tasks had been retrieved."
         });
 
@@ -38,7 +38,7 @@ export const getTaskByID = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [task],
+            data: task,
             msg: `Task with ID: ${id} has been found.`
         });
 
@@ -91,7 +91,7 @@ export const editTask = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [task],
+            data: task,
             msg: "Task has been updated."
         });
 
@@ -114,7 +114,7 @@ export const deleteTask = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [task],
+            data: task,
             msg: "Task has been deleted."
         });
 

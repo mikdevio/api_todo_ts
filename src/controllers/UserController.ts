@@ -13,7 +13,7 @@ export const getAllUser = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [users],
+            data: users,
             msg: "All users had been retrieved."
         });
 
@@ -38,7 +38,7 @@ export const getUserByID = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [user],
+            data: user,
             msg: `User with ID: ${id} has been found.`
         });
 
@@ -90,7 +90,7 @@ export const editUser = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [user],
+            data: user,
             msg: "User has been updated."
         });
 
@@ -113,7 +113,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 
         res.status(201).json({
             status: "success",
-            data: [user],
+            data: user,
             msg: "A user has been deleted."
         });
 
