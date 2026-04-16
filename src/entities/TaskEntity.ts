@@ -20,13 +20,10 @@ export class Task {
     @CreateDateColumn()
     createdAt: Date;
 
-    // @ManyToOne(() => User, (user) => user.tasks)
-    // user: User;
-
-    @ManyToMany(() => Category, category => category.tasks)
+    @ManyToMany(() => Category, category => category.tasks, {eager:true})
     categories: Category[];
 
-    @ManyToOne(() => Project, project => project.tasks)
+    @ManyToOne(() => Project, project => project.tasks, {eager:true})
     project: Project;
 
 }
