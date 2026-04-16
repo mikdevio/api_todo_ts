@@ -9,9 +9,9 @@ import projectRouter from "./ProjectRoutes.js"
 const router = express.Router();
 
 router.route("/").get(getAPI);              // main route
-router.use("/task", taskRouter);            // task routes
-router.use("/user", userRouter);            // user routes
-router.use("/category", categoryRouter)     // category routes
-router.use("/project", projectRouter)       // project routes
+router.use("/tasks", taskRouter);            // task routes
+router.use("/users", userRouter);            // user routes
+router.use("/categories", categoryRouter)     // category routes
+router.use("/projects", projectRouter)       // project routes
 
 export default router;
