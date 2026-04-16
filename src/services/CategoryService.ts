@@ -1,6 +1,6 @@
 import { AppDataSource } from "../config/data_source.js";
-import { Category } from "../entity/CategoryEntity.js";
-import type { Task } from "../entity/TaskEntity.js";
+import { Category } from "../entities/CategoryEntity.js";
+import type { Task } from "../entities/TaskEntity.js";
 
 
 export class CategoryService {

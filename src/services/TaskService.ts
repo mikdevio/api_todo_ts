@@ -1,8 +1,8 @@
 import { In } from "typeorm";
 import { AppDataSource } from "../config/data_source.js";
-import { Category } from "../entity/CategoryEntity.js";
-import { Task } from "../entity/TaskEntity.js";
-import { User } from "../entity/UserEntity.js";
+import { Category } from "../entities/CategoryEntity.js";
+import { Task } from "../entities/TaskEntity.js";
+import { User } from "../entities/UserEntity.js";
 
 export class TaskService {
     // Obtenemos el repositorios de Task
