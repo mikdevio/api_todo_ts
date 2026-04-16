@@ -1,8 +1,8 @@
 import { In } from "typeorm";
 import { AppDataSource } from "../config/data_source.js";
-import { Project } from "../entity/ProjectEntity.js";
-import { User } from "../entity/UserEntity.js";
-import { Task } from "../entity/TaskEntity.js";
+import { Project } from "../entities/ProjectEntity.js";
+import { User } from "../entities/UserEntity.js";
+import { Task } from "../entities/TaskEntity.js";
 
 
 export class ProjectService {

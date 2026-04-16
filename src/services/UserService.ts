@@ -1,5 +1,5 @@
 import { AppDataSource } from "../config/data_source.js";
-import { User } from "../entity/UserEntity.js";
+import { User } from "../entities/UserEntity.js";
 
 export class UserService {
     // Obtenemos el repositorios de Task
