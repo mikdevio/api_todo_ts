@@ -1,13 +1,13 @@
-import { DataSource } from "typeorm";
-import type { SeederOptions } from "typeorm-extension";
-import { Task } from '../entities/TaskEntity.js'
-import { User } from "../entities/UserEntity.js"
-import { Category } from "../entities/CategoryEntity.js";
-import { Project } from "../entities/ProjectEntity.js";
+import { DataSource } from 'typeorm';
+import type { SeederOptions } from 'typeorm-extension';
+import { Task } from '../entities/TaskEntity.js';
+import { User } from '../entities/UserEntity.js';
+import { Category } from '../entities/CategoryEntity.js';
+import { Project } from '../entities/ProjectEntity.js';
 
 import dotenv from 'dotenv';
-import InitialSeeder from "../seeds/initial.seeder.js";
-import type { DataSourceOptions } from "typeorm/browser";
+import InitialSeeder from '../seeds/initial.seeder.js';
+import type { DataSourceOptions } from 'typeorm/browser';
 
 // Variables de configuración
 dotenv.config();
@@ -18,17 +18,17 @@ const dbConfig = {
   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 5432,
   pass: process.env.DB_PASSWORD as string,
   name: process.env.DB_NAME as string,
-}
+};
 
 // console.log(dbConfig)
 
 // Si falta algo, lanzamos un error claro
-if (Object.values(dbConfig).some(v => !v)) {
+if (Object.values(dbConfig).some((v) => !v)) {
   throw new Error("There's non defined variables in .env");
 }
 
 const options: DataSourceOptions & SeederOptions = {
-  type: "postgres",
+  type: 'postgres',
   host: dbConfig.host,
   port: dbConfig.port,
   username: dbConfig.user,
@@ -36,7 +36,7 @@ const options: DataSourceOptions & SeederOptions = {
   database: dbConfig.name,
   entities: [Task, User, Category, Project],
   // entities: ['/src/entity/*{.ts,.js}'],
-  synchronize: false,              // Solo en desarrollo, activar para generar tablas
+  synchronize: false, // Solo en desarrollo, activar para generar tablas
   logging: false,
   subscribers: [],
 
@@ -51,6 +51,6 @@ const options: DataSourceOptions & SeederOptions = {
   migrationsRun: false,
   migrationsTableName: 'migrations',
   migrationsTransactionMode: 'all',
-}
+};
 
 export const AppDataSource = new DataSource(options);
