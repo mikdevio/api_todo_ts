@@ -8,13 +8,17 @@ import { Repository, type ObjectLiteral } from 'typeorm';
  * - Record<keyof Repository<T>, jest.Mock>: Aquí ocurre la magia. Tomamos todas las llaves (nombres de funciones) de un Repository real
  * (como save, find, delete) y decimos que ahora su valor no es la función real, sino un "jest.Mock" (una función espía de Jest).
  */
-export type MockRepository<T extends ObjectLiteral = any> = Partial<Record<keyof Repository<T>, jest.Mock>>;
+export type MockRepository<T extends ObjectLiteral = any> = Partial<
+  Record<keyof Repository<T>, jest.Mock>
+>;
 
 /**
  * 3. Función createMockRepository:
  * Es una función "fábrica" que devuelve un objeto nuevo con la estructura que definimos arriba.
  */
-export const createMockRepository = <T extends ObjectLiteral = any>(): MockRepository<T> => ({
+export const createMockRepository = <
+  T extends ObjectLiteral = any,
+>(): MockRepository<T> => ({
   // 4. Definimos las funciones más comunes como funciones de Jest (jest.fn()).
   // Estas funciones nos permiten hacer cosas como: .mockResolvedValue() o .toHaveBeenCalled().
   save: jest.fn(),

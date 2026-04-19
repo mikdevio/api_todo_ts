@@ -1,0 +1,12 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "semi": "off", // Desactiva la regla base de JS
+    "@typescript-eslint/semi": ["error", "always"] // Activa la versión de TS como error
+  }
+}

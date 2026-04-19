@@ -1,13 +1,11 @@
-
 import express, { type Application } from 'express';
 
 import cors from 'cors';
 
-import apiRouter from "./routes/index.js"
+import apiRouter from './routes/index.js';
 
 // Iniciando servidor express
 const app: Application = express();
-
 
 // --- Global middlewares ---
 
@@ -23,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // --- Routes definition ---
 
 // Main route of the centralized api and version
-app.use("/api/v1", apiRouter);
+app.use('/api/v1', apiRouter);
 
 // --- Manejo de Errores ---
 
