@@ -6,8 +6,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { User } from './UserEntity.js';
-import { Task } from './TaskEntity.js';
+import { User } from '@/entities/UserEntity';
+import { Task } from '@/entities/TaskEntity';
 
 @Entity()
 export class Project {

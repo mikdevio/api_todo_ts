@@ -1,4 +1,4 @@
-import express, { type Request, type Response } from 'express';
+import { type Request, type Response } from 'express';
 
 // Controlador para la ruta principal del API "/"
 export const getAPI = (req: Request, res: Response) => {

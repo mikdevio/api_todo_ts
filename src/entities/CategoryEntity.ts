@@ -6,7 +6,7 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Task } from './TaskEntity.js';
+import { Task } from '@/entities/TaskEntity';
 
 @Entity()
 export class Category {

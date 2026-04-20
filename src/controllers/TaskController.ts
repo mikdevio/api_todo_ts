@@ -1,6 +1,5 @@
 import express, { type Request, type Response } from 'express';
-import { type Task } from '../types/types.js';
-import { TaskService } from '../services/TaskService.js';
+import { TaskService } from '@/services/TaskService';
 
 const taskService = new TaskService();
 

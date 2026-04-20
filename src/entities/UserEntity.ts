@@ -6,7 +6,7 @@ import {
   OneToMany,
   ManyToOne,
 } from 'typeorm';
-import { Project } from './ProjectEntity.js';
+import { Project } from '@/entities/ProjectEntity';
 
 @Entity()
 export class User {

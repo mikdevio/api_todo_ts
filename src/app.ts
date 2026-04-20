@@ -2,7 +2,7 @@ import express, { type Application } from 'express';
 
 import cors from 'cors';
 
-import apiRouter from './routes/index.js';
+import apiRouter from '@/routes/index.js';
 
 // Iniciando servidor express
 const app: Application = express();

@@ -1,23 +1,12 @@
 // 1. Importamos Repository (la clase base de TypeORM) y ObjectLiteral (una interfaz que define qué es un objeto válido de entidad).
 import { Repository, type ObjectLiteral } from 'typeorm';
 
-// /**
-//  * 2. Definición del TIPO MockRepository:
-//  * - <T extends ObjectLiteral = any>: Es un genérico que dice "T debe ser una entidad de TypeORM".
-//  * - Partial<...>: Hace que todos los métodos del repositorio sean opcionales (no tenemos que mockear los 50 métodos de TypeORM, solo los que usemos).
-//  * - Record<keyof Repository<T>, jest.Mock>: Aquí ocurre la magia. Tomamos todas las llaves (nombres de funciones) de un Repository real
-//  * (como save, find, delete) y decimos que ahora su valor no es la función real, sino un "jest.Mock" (una función espía de Jest).
-//  */
-// export type MockRepository<T extends ObjectLiteral = any> = Partial<
-//   Record<keyof Repository<T>, jest.Mock>
-// >;
-
 /**
- * 3. Función createMockRepository:
+ * 2. Función createMockRepository:
  * Es una función "fábrica" que devuelve un objeto nuevo con la estructura que definimos arriba.
  */
 export const createMockRepository = <T extends ObjectLiteral = any>() => {
-  // 4. Definimos las funciones más comunes como funciones de Jest (jest.fn()).
+  // 3. Definimos las funciones más comunes como funciones de Jest (jest.fn()).
   // Estas funciones nos permiten hacer cosas como: .mockResolvedValue() o .toHaveBeenCalled().
   const repo = {
     save: jest.fn(),
@@ -28,7 +17,7 @@ export const createMockRepository = <T extends ObjectLiteral = any>() => {
     update: jest.fn(),
 
     /**
-     * 5. Mock del QueryBuilder:
+     * 4. Mock del QueryBuilder:
      * El QueryBuilder es más complejo porque usa "encadenamiento" (ej: .where().getMany()).
      * Por eso, creamos una función que devuelve un objeto que a su vez tiene más funciones mockeadas.
      */

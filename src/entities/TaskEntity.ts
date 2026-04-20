@@ -6,8 +6,8 @@ import {
   ManyToOne,
   ManyToMany,
 } from 'typeorm';
-import { Category } from './CategoryEntity.js';
-import { Project } from './ProjectEntity.js';
+import { Category } from '@/entities/CategoryEntity';
+import { Project } from '@/entities/ProjectEntity';
 
 @Entity()
 export class Task {

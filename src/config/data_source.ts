@@ -1,12 +1,12 @@
 import { DataSource } from 'typeorm';
 import type { SeederOptions } from 'typeorm-extension';
-import { Task } from '../entities/TaskEntity.js';
-import { User } from '../entities/UserEntity.js';
-import { Category } from '../entities/CategoryEntity.js';
-import { Project } from '../entities/ProjectEntity.js';
+import { Task } from '@/entities/TaskEntity';
+import { User } from '@/entities/UserEntity';
+import { Category } from '@/entities/CategoryEntity';
+import { Project } from '@/entities/ProjectEntity';
 
 import dotenv from 'dotenv';
-import InitialSeeder from '../seeds/initial.seeder.js';
+import InitialSeeder from '@/seeds/initial.seeder.js';
 import type { DataSourceOptions } from 'typeorm/browser';
 
 // Variables de configuración
@@ -41,7 +41,7 @@ const options: DataSourceOptions & SeederOptions = {
   subscribers: [],
 
   // entities: ['./src/**/*{.ts,.js}'],
-  migrations: ['./src/migrations/*{.ts,.js}'],
+  migrations: ['@/migrations/*{.ts,.js}'],
 
   // Registrar seeder
   seeds: [InitialSeeder],

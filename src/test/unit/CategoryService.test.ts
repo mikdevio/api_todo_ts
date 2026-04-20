@@ -1,8 +1,8 @@
-import { AppDataSource } from '@/config/data_source.js';
-import { CategoryService } from '../../services/CategoryService.js';
-import { createMockRepository } from '../mocks/repository.mock.js';
+import { AppDataSource } from '@/config/data_source';
+import { CategoryService } from '@/services/CategoryService';
+import { createMockRepository } from '@/test/mocks/repository.mock';
 
-jest.mock('../../src/config/data_source', () => ({
+jest.mock('@/config/data_source', () => ({
   AppDataSource: {
     getRepository: jest.fn(),
   },

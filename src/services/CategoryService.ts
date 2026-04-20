@@ -1,6 +1,5 @@
-import { AppDataSource } from '../config/data_source.js';
-import { Category } from '../entities/CategoryEntity.js';
-import type { Task } from '../entities/TaskEntity.js';
+import { AppDataSource } from '@/config/data_source';
+import { Category } from '@/entities/CategoryEntity';
 
 export class CategoryService {
   // Obtenemos el repositorios de Task

@@ -1,10 +1,10 @@
 import express from 'express';
-import { getAPI } from '../controllers/index.js';
+import { getAPI } from '@/controllers/index.js';
 
-import taskRouter from './TaskRoutes.js';
-import userRouter from './UserRoutes.js';
-import categoryRouter from './CategoryRoutes.js';
-import projectRouter from './ProjectRoutes.js';
+import taskRouter from '@/routes/TaskRoutes.js';
+import userRouter from '@/routes/UserRoutes.js';
+import categoryRouter from '@/routes/CategoryRoutes.js';
+import projectRouter from '@/routes/ProjectRoutes.js';
 
 const router = express.Router();
 
