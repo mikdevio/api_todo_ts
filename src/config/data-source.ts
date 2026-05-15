@@ -1,4 +1,4 @@
-// data_source.ts
+// data-source.ts
 
 import { DataSource } from 'typeorm';
 import type { SeederOptions } from 'typeorm-extension';

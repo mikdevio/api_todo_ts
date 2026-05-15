@@ -1,5 +1,5 @@
 import { In } from 'typeorm';
-import { AppDataSource } from '@/config/data_source';
+import { AppDataSource } from '@/config/data-source';
 import { Project } from '@/entities/ProjectEntity';
 import { User } from '@/entities/UserEntity';
 import { Task } from '@/entities/TaskEntity';

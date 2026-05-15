@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import dotenv from 'dotenv';
 
 import app from '@/app.js';
-import { AppDataSource } from '@/config/data_source.js';
+import { AppDataSource } from '@/config/data-source.js';
 
 // Variables de configuración
 dotenv.config();
