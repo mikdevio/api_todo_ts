@@ -1,3 +1,8 @@
+// @file:   index.ts
+// @brief:  Main index controller to manage actions other controllers
+// @version: 1.0.0
+
+
 import { type Request, type Response } from 'express';
 
 // Controlador para la ruta principal del API "/"

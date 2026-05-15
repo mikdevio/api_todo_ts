@@ -1,3 +1,8 @@
+// @file:   ProjectController.ts
+// @brief:  Project controller to manage actions on project entity
+// @version: 1.0.0
+
+
 import express, { type Request, type Response } from 'express';
 import { ProjectService } from '@/services/ProjectService';
 

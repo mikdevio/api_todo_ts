@@ -1,3 +1,8 @@
+// @file:   CategoryController.ts
+// @brief:  Category controller to manage actions on category entity
+// @version: 1.0.0
+
+
 import express, { type Request, type Response } from 'express';
 import { CategoryService } from '@/services/CategoryService';
 

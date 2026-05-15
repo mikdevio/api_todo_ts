@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // --- Routes definition ---
 
 // Main route of the centralized api and version
-app.use('/api/v1', apiRouter);
+app.use('/api/v1.0', apiRouter);
 
 // --- Manejo de Errores ---
 

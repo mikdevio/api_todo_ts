@@ -1,3 +1,8 @@
+// @file:   UserController.ts
+// @brief:  User controller to manage actions on user entity
+// @version: 1.0.0
+
+
 import express, { type Request, type Response } from 'express';
 import { UserService } from '@/services/UserService';
 
