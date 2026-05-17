@@ -38,7 +38,7 @@
     "skipLibCheck": true,
 
     /* Entorno */
-    "types": ["jest", "node"]
+    "types": ["vitest/globals", "node"]
   },
   "include": ["src/**/*", "test/**/*"],
   "exclude": ["node_modules", "dist"]

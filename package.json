@@ -4,7 +4,6 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec tsx src/server.ts",
     "build": "rimraf dist && tsc",
     "typeorm": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/config/data_source.ts",
@@ -12,9 +11,9 @@
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
     "db:seed": "tsx ./src/seeds/run-seeds.ts",
-    "test:unit": "jest --config jest.config.js",
-    "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
   },
   "keywords": [],
   "author": "",
@@ -29,27 +28,28 @@
     "typeorm": "^0.3.28"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@faker-js/faker": "^10.3.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
-    "@types/jest": "^30.0.0",
     "@types/node": "^25.3.3",
     "@types/supertest": "^7.2.0",
     "@typescript-eslint/eslint-plugin": "^8.58.2",
     "@typescript-eslint/parser": "^8.58.2",
-    "eslint": "^10.2.1",
+    "@vitest/coverage-v8": "^4.1.6",
+    "eslint": "^10.4.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
-    "jest": "^30.3.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.3",
     "rimraf": "^6.1.3",
     "supertest": "^7.2.2",
-    "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.21.0",
     "typeorm-extension": "^3.9.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.59.3",
+    "vitest": "^4.1.6"
   }
 }

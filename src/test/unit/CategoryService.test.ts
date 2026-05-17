@@ -1,4 +1,4 @@
-import { AppDataSource } from '@/config/data_source';
+import { AppDataSource } from '@/config/data-source';
 import { CategoryService } from '@/services/CategoryService';
 import { createMockRepository } from '@/test/mocks/repository.mock';
 
