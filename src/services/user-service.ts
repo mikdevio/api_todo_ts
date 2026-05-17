@@ -1,5 +1,5 @@
 import { AppDataSource } from '@/config/data-source';
-import { User } from '@/entities/UserEntity';
+import { User } from '@/entities/user-entity';
 
 export class UserService {
   // Obtenemos el repositorios de Task

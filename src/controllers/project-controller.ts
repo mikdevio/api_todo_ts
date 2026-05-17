@@ -3,8 +3,8 @@
 // @version: 1.0.0
 
 
-import express, { type Request, type Response } from 'express';
-import { ProjectService } from '@/services/ProjectService';
+import { type Request, type Response } from 'express';
+import { ProjectService } from '@/services/project-service';
 
 const projectService = new ProjectService();
 

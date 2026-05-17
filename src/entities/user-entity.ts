@@ -4,9 +4,8 @@ import {
   Column,
   CreateDateColumn,
   OneToMany,
-  ManyToOne,
 } from 'typeorm';
-import { Project } from '@/entities/ProjectEntity';
+import { Project } from '@/entities/project-entity';
 
 @Entity()
 export class User {

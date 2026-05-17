@@ -3,8 +3,8 @@
 // @version: 1.0.0
 
 
-import express, { type Request, type Response } from 'express';
-import { CategoryService } from '@/services/CategoryService';
+import { type Request, type Response } from 'express';
+import { CategoryService } from '@/services/category-service';
 
 const categoryService = new CategoryService();
 
@@ -57,7 +57,7 @@ export const createCategory = async (req: Request, res: Response) => {
 
     // Creando nueva category
     const category = await categoryService.createCategory(data);
-
+    
     // console.log(category)
 
     //TODO: Agregar lógica de gardado de datos en DB

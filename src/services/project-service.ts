@@ -1,8 +1,8 @@
 import { In } from 'typeorm';
 import { AppDataSource } from '@/config/data-source';
-import { Project } from '@/entities/ProjectEntity';
-import { User } from '@/entities/UserEntity';
-import { Task } from '@/entities/TaskEntity';
+import { Project } from '@/entities/project-entity';
+import { User } from '@/entities/user-entity';
+import { Task } from '@/entities/task-entity';
 
 export class ProjectService {
   // Obtenemos el repositorios de Task

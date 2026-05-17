@@ -16,7 +16,7 @@ export const getAPI = (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).send({
       status: 'Server error',
-      message: 'Internal Server Error',
+      message: `Internal Error: ${error}`,
     });
   }
 };

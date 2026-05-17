@@ -1,5 +1,5 @@
 import { AppDataSource } from '@/config/data-source';
-import { Category } from '@/entities/CategoryEntity';
+import { Category } from '@/entities/category-entity';
 
 export class CategoryService {
   // Obtenemos el repositorios de Task
