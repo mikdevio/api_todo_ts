@@ -1,9 +1,9 @@
 import type { DataSource } from 'typeorm';
 import type { Seeder, SeederFactoryManager } from 'typeorm-extension';
-import { User } from '@/entities/UserEntity';
-import { Project } from '@/entities/ProjectEntity';
-import { Category } from '@/entities/CategoryEntity';
-import { Task } from '@/entities/TaskEntity';
+import { User } from '@/entities/user-entity';
+import { Project } from '@/entities/project-entity';
+import { Category } from '@/entities/category-entity';
+import { Task } from '@/entities/task-entity';
 
 export default class InitialSeeder implements Seeder {
   public async run(

@@ -3,8 +3,8 @@
 // @version: 1.0.0
 
 
-import express, { type Request, type Response } from 'express';
-import { TaskService } from '@/services/TaskService';
+import { type Request, type Response } from 'express';
+import { TaskService } from '@/services/task-service';
 
 const taskService = new TaskService();
 

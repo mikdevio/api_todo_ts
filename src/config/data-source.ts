@@ -2,10 +2,10 @@
 
 import { DataSource } from 'typeorm';
 import type { SeederOptions } from 'typeorm-extension';
-import { Task } from '@/entities/TaskEntity';
-import { User } from '@/entities/UserEntity';
-import { Category } from '@/entities/CategoryEntity';
-import { Project } from '@/entities/ProjectEntity';
+import { Task } from '@/entities/task-entity';
+import { User } from '@/entities/user-entity';
+import { Category } from '@/entities/category-entity';
+import { Project } from '@/entities/project-entity';
 
 import dotenv from 'dotenv';
 import InitialSeeder from '@/seeds/initial.seeder.js';

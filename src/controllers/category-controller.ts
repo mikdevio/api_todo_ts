@@ -63,7 +63,7 @@ export const createCategory = async (req: Request, res: Response) => {
     //TODO: Agregar lógica de gardado de datos en DB
     res.status(201).json({
       status: 'success',
-      data: [],
+      data: category,
       msg: 'New category has been created.',
     });
   } catch (error) {

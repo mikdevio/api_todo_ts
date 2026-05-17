@@ -1,4 +1,4 @@
-import { AppDataSource } from '@/config/data_source';
+import { AppDataSource } from '@/config/data-source';
 import { runSeeders } from 'typeorm-extension';
 
 async function run() {

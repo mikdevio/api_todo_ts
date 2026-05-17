@@ -17,7 +17,7 @@ AppDataSource.initialize()
     console.log('PSQL connected.');
     // Iniciando servidor en localhost:pruerto
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`Server running on http://localhost:${PORT}/api/v1.0/`);
     });
-  })
+  }) 
   .catch((error) => console.error('Error during connection:', error));
