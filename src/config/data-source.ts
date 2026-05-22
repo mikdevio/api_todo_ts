@@ -8,7 +8,7 @@ import { Category } from '@/entities/category-entity';
 import { Project } from '@/entities/project-entity';
 
 import dotenv from 'dotenv';
-import InitialSeeder from '@/seeds/initial.seeder.js';
+import InitialSeeder from '@/seeds/initial-seeder.js';
 import type { DataSourceOptions } from 'typeorm/browser';
 
 // Variables de configuración
